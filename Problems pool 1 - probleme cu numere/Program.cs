@@ -39,35 +39,29 @@ namespace Problems_pool_1___probleme_cu_numere
 {
     class Program
     {
-
-        static void citire(string s, ref int x)
-        {
-            Console.WriteLine($"Introduceti un numar intreg {s}:");
-            Console.Write($"{s} = ");
-            x = int.Parse(Console.ReadLine());
-        }
-        static void citire(string s, ref float x)
+        static int citireInt(string s)
         {
             Console.WriteLine($"Introduceti un numar zecimal {s}:");
             Console.Write($"{s} = ");
-            x = float.Parse(Console.ReadLine());
+            return int.Parse(Console.ReadLine());
+        }
+        static float citireFloat(string s)
+        {
+            Console.WriteLine($"Introduceti un numar zecimal {s}:");
+            Console.Write($"{s} = ");
+            return float.Parse(Console.ReadLine());
         }
 
         static void _1()
         {
-            float a = 0, b = 0;
-            citire("a", ref a);
-            citire("b", ref b);
+            float a = citireFloat("a"), b = citireFloat("b");
 
             Console.WriteLine($"Radacina x este {-b / a}.");
         }
 
         static void _2()
         {
-            float a = 0, b = 0, c = 0;
-            citire("a", ref a);
-            citire("b", ref b);
-            citire("c", ref c);
+            float a = citireFloat("a"), b = citireFloat("b"), c = citireFloat("a");
 
             float delta = b * b - 4 * a * c;
 
@@ -81,24 +75,20 @@ namespace Problems_pool_1___probleme_cu_numere
 
         static void _3()
         {
-            float n = 0, k = 0;
-            citire("n", ref n);
-            citire("k", ref k);
+            float n = citireFloat("n"), k = citireFloat("k");
 
             Console.WriteLine($"n {(n % k == 0 ? "\b" : "nu")} se divide cu k. ");
         }
 
         static void _4()
         {
-            int y = 0;
-            citire("y", ref y);
+            int y = citireInt("y");
+
             Console.WriteLine($"Anul {y} {(y % 4 == 0 ? "\b" : "nu")} este un an bisect.");
         }
         static void _5()
         {
-            int n = 0, k = 0;
-            citire("n", ref n);
-            citire("k", ref k);
+            int n = citireInt("n"), k = citireInt("k");
 
             if (k <= n.ToString().Length)
                 Console.WriteLine($"A k-a cifra a numarului {n} de la dreapta la stanga este {(n / (int)Math.Pow(10, k - 1)) % 10}");
@@ -107,10 +97,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _6()
         {
-            float a = 0, b = 0, c = 0;
-            citire("a", ref a);
-            citire("b", ref b);
-            citire("c", ref c);
+            float a = citireFloat("a"), b = citireFloat("b"), c = citireFloat("c");
 
             if (a > 0 && b > 0 && c > 0 && (a + b) > c && (a + c) > b && (c + b) > a)
                 Console.WriteLine($"Numerele a={a}, b={b} si c={c} pot fi lungimile laturilor unui triunghi.");
@@ -120,9 +107,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _7()
         {
-            float a = 0, b = 0;
-            citire("a", ref a);
-            citire("b", ref b);
+            float a = citireFloat("a"), b = citireFloat("b");
 
             float aux = a;
             a = b;
@@ -132,9 +117,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _8()
         {
-            float a = 0, b = 0;
-            citire("a", ref a);
-            citire("b", ref b);
+            float a = citireFloat("a"), b = citireFloat("b");
 
             a += b;
             b = a - b;
@@ -144,8 +127,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _9()
         {
-            int n = 0;
-            citire("n", ref n);
+            int n = citireInt("n");
 
             Console.Write($"Divizorii numarului {n} sunt: ");
 
@@ -157,8 +139,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _10()
         {
-            int n = 0;
-            citire("n", ref n);
+            int n = citireInt("n");
 
             Console.Write($"Numarul {n} ");
 
@@ -172,8 +153,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _11()
         {
-            int n = 0;
-            citire("n", ref n);
+            int n = citireInt("n");
 
             Console.Write($"Numarul {n} scris invers este ");
             while (n > 0)
@@ -185,10 +165,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _12()
         {
-            int n = 0, a = 0, b = 0;
-            citire("n", ref n);
-            citire("a", ref a);
-            citire("b", ref b);
+            int n = citireInt("n"), a = citireInt("a"), b = citireInt("b");
 
             bool ok = false;
             string s = "";
@@ -218,9 +195,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _13()
         {
-            int y1 = 0, y2 = 0;
-            citire("y1", ref y1);
-            citire("y2", ref y2);
+            int y1 = citireInt("y1"), y2 = citireInt("y2");
 
             if (y1 < y2)
                 Console.WriteLine($"Intre {y1} si {y2} sunt {y2 / 4 - y1 / 4 - 1} ani bisecti.");
@@ -229,8 +204,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _14()
         {
-            int n = 0;
-            citire("n", ref n);
+            int n = citireInt("n");
 
             int og = 0, aux = n;
             while (aux > 0)
@@ -242,10 +216,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _15()
         {
-            float a = 0, b = 0, c = 0;
-            citire("a", ref a);
-            citire("b", ref b);
-            citire("c", ref c);
+            float a = citireFloat("a"), b = citireFloat("b"), c = citireFloat("c");
 
             if (a > b)
                 (a, b) = (b, a);
@@ -257,12 +228,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _16()
         {
-            float a = 0, b = 0, c = 0, d = 0, e = 0;
-            citire("a", ref a);
-            citire("b", ref b);
-            citire("c", ref c);
-            citire("d", ref d);
-            citire("e", ref e);
+            float a = citireFloat("a"), b = citireFloat("b"), c = citireFloat("c"), d = citireFloat("d"), e = citireFloat("e");
 
             if (a > b)
                 (a, b) = (b, a);
@@ -292,9 +258,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _17()
         {
-            int a = 0, b = 0;
-            citire("a", ref a);
-            citire("b", ref b);
+            int a = citireInt("a"), b = citireInt("b");
 
             int a2 = a, b2 = b;
             int r;
@@ -309,8 +273,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _18()
         {
-            int n = 0;
-            citire("n", ref n);
+            int n = citireInt("n");
 
             string s = "";
             int d = 2, divSum;
@@ -332,8 +295,7 @@ namespace Problems_pool_1___probleme_cu_numere
         }
         static void _19()
         {
-            int n = 0;
-            citire("n", ref n);
+            int n = citireInt("n");
 
             bool ok = false;
             int n1 = n;
@@ -359,11 +321,9 @@ namespace Problems_pool_1___probleme_cu_numere
 
             Console.WriteLine($"Numarul {n}{(ok == true ? "" : " nu")} este format doar din 2 cifre care se tot repeta.");
         }
-        static void _20()
+        static void _20()   
         {
-            int m = 0, n = 0;
-            citire("m", ref m);
-            citire("n", ref n);
+            int m = citireInt("m"), n = citireInt("n");
             int m1 = m, n1 = n;
 
             int[] resturi = new int[1000];
