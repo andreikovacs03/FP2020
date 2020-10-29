@@ -41,7 +41,7 @@ namespace Problems_pool_1___probleme_cu_numere
     {
         static int citireInt(string s)
         {
-            Console.WriteLine($"Introduceti un numar zecimal {s}:");
+            Console.WriteLine($"Introduceti un numar intreg {s}:");
             Console.Write($"{s} = ");
             return int.Parse(Console.ReadLine());
         }

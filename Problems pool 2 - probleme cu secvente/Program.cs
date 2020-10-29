@@ -36,32 +36,72 @@ namespace Problems_pool_2___probleme_cu_secvente
 {
     class Program
     {
-        static void citireVector(string s, ref int[] x)
+        /// <summary>
+        /// Citeste de la tastatatura un numar "s" si afiseaza un mesaj corespunzator utilizatorului.
+        /// </summary>
+        /// <param name="s">Numele variabilei.</param>
+        /// <returns>Returneaza valoarea primita de catre utilizator.</returns>
+        static int citireInt(string s)
         {
-            Console.WriteLine($"Introduceti n numere intregi pe aceeasi linie {s}:");
+            Console.WriteLine($"Introduceti un numar intreg {s}:");
             Console.Write($"{s} = ");
+            return int.Parse(Console.ReadLine());
         }
-        static int citireVector(string s)
+        /// <summary>
+        /// Citeste de la tastatura un sir de numere si il converteste in int dupa care returneaza acest vector.
+        /// </summary>
+        /// <returns>Returneaza vectorul primit de catre utilizator</returns>
+        static int[] citireVector()
         {
-            Console.WriteLine($"Introduceti n numere zecimale pe aceeasi linie: {s}:");
-            Console.Write($"{s} = ");
+            Console.WriteLine("Introduceti n numere intregi pe aceeasi linie delimitate de un singur spatiu:");
             int[] x = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
             return x;
         }
         static void _1()
         {
-            
+            int[] x = citireVector();
+            int sum = 0;
+            foreach (var i in x)
+                if (i % 2 == 0)
+                    sum++;
+
+            Console.WriteLine($"Vectorul are {sum} numere pare.");
         }
         static void _2()
         {
+            int[] x = citireVector();
+            int negative = 0, zero = 0, pozitive = 0;
+            foreach (var i in x)
+                if (i < 0)
+                    negative++;
+                else if (i == 0)
+                    zero++;
+                else
+                    pozitive++;
 
+            Console.WriteLine($"Vectorul are {negative} numere negative, {zero} numere egale cu 0 si {pozitive} numere pozitive.");
         }
         static void _3()
         {
+            int n = citireInt("n");
+            int sum = 0, prod = 1;
 
+            for (int i = 1; i <= n; i++)
+            {
+                sum += i;
+                prod *= i;
+            }
+            Console.WriteLine($"Suma tuturor elementelor din vector este {sum} iar produsul tuturor elementelor este {prod}.");
         }
         static void _4()
         {
+            int[] n = citireVector();
+            int a = citireInt("a");
+            int poz = -1;
+            for (int i = 0; i < n.Length; i++)
+                if (n[i] == a)
+                    poz = i;
+            Console.WriteLine($"Numarul {a} se afla pe pozitia {poz} in secventa.");
 
         }
         static void _5()
