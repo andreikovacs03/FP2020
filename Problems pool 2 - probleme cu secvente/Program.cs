@@ -36,11 +36,14 @@ namespace Problems_pool_2___probleme_cu_secvente
 {
     class Program
     {
+        #region Solved Problems
+
+        #region Helper Functions
         /// <summary>
         /// Citeste de la tastatatura un numar "s" si afiseaza un mesaj corespunzator utilizatorului.
         /// </summary>
         /// <param name="s">Numele variabilei.</param>
-        /// <returns>Returneaza valoarea primita de catre utilizator.</returns>
+        /// <returns>Returneaza o valoare intreaga primita de catre utilizator.</returns>
         static int citireInt(string s)
         {
             Console.WriteLine($"Introduceti un numar intreg {s}:");
@@ -57,6 +60,8 @@ namespace Problems_pool_2___probleme_cu_secvente
             int[] x = Array.ConvertAll(Console.ReadLine().Split(), int.Parse);
             return x;
         }
+        #endregion
+
         static void _1()
         {
             int[] x = citireVector();
@@ -156,6 +161,9 @@ namespace Problems_pool_2___probleme_cu_secvente
         {
 
         }
+        #endregion
+
+        #region Driver Code
         static void Main(string[] args)
         {
             Console.WriteLine("====================== Problems pool 2 - probleme cu secvente ======================\n\n");
@@ -210,5 +218,6 @@ namespace Problems_pool_2___probleme_cu_secvente
                 }
             }
         }
+        #endregion
     }
 }

@@ -39,18 +39,32 @@ namespace Problems_pool_1___probleme_cu_numere
 {
     class Program
     {
+        #region Solved Problems as functions
+
+        #region Helper Functions
+        /// <summary>
+        /// Citeste de la tastatatura un numar "s" si afiseaza un mesaj corespunzator utilizatorului.
+        /// </summary>
+        /// <param name="s">Numele variabilei citite.</param>
+        /// <returns>Returneaza o valoare intreaga primita de catre utilizator.</returns>
         static int citireInt(string s)
         {
             Console.WriteLine($"Introduceti un numar intreg {s}:");
             Console.Write($"{s} = ");
             return int.Parse(Console.ReadLine());
         }
+        /// <summary>
+        /// Citeste de la tastatatura un numar "s" si afiseaza un mesaj corespunzator utilizatorului.
+        /// </summary>
+        /// <param name="s">Numele variabilei.</param>
+        /// <returns>Returneaza o valoare zecimala primita de catre utilizator.</returns>
         static float citireFloat(string s)
         {
             Console.WriteLine($"Introduceti un numar zecimal {s}:");
             Console.Write($"{s} = ");
             return float.Parse(Console.ReadLine());
         }
+        #endregion
 
         static void _1()
         {
@@ -377,6 +391,9 @@ namespace Problems_pool_1___probleme_cu_numere
 
             Console.WriteLine($"Numarul la care va gandeati este {st}.");
         }
+        #endregion
+
+        #region Driver Code
         static void Main(string[] args)
         {
             Console.WriteLine("====================== Problems pool 1 - probleme cu numere ======================\n\n");
@@ -435,5 +452,6 @@ namespace Problems_pool_1___probleme_cu_numere
                 }
             }
         }
+            #endregion
     }
 }
