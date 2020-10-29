@@ -62,30 +62,45 @@ namespace Problems_pool_2___probleme_cu_secvente
             Console.WriteLine();
             return x;
         }
+        static int citireNVector()
+        {
+            Console.WriteLine($"Introduceti un numar intreg n si n elemente (fiecare la linie noua):");
+            Console.Write("n = ");
+
+            return int.Parse(Console.ReadLine());
+
+        }
         #endregion
 
         static void _1()
         {
-            int[] x = citireVector();
+            int n = citireNVector(), x;
             int sum = 0;
-            foreach (var i in x)
-                if (i % 2 == 0)
+
+            for (int i = 0; i < n; i++)
+            {
+                x = int.Parse(Console.ReadLine());
+                if (x % 2 == 0)
                     sum++;
+            }
 
             Console.WriteLine($"Vectorul are {sum} numere pare.");
         }
         static void _2()
         {
-            int[] x = citireVector();
+            int n = citireNVector(), x;
             int negative = 0, zero = 0, pozitive = 0;
-            foreach (var i in x)
-                if (i < 0)
+
+            for (int i = 0; i < n; i++)
+            {
+                x = int.Parse(Console.ReadLine());
+                if (x < 0)
                     negative++;
-                else if (i == 0)
+                else if (x == 0)
                     zero++;
                 else
                     pozitive++;
-
+            }
             Console.WriteLine($"Vectorul are {negative} numere negative, {zero} numere egale cu 0 si {pozitive} numere pozitive.");
         }
         static void _3()
@@ -102,45 +117,60 @@ namespace Problems_pool_2___probleme_cu_secvente
         }
         static void _4()
         {
-            int[] n = citireVector();
             int a = citireInt("a");
+            int n = citireNVector(), x;
             int poz = -1;
-            for (int i = 0; i < n.Length; i++)
-                if (n[i] == a)
+            for (int i = 0; i < n; i++)
+            {
+                x = int.Parse(Console.ReadLine());
+                if (x == a)
                     poz = i;
+            }
             Console.WriteLine($"Numarul {a} se afla pe pozitia {poz} in secventa.");
 
         }
         static void _5()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x;
             int sum = 0;
 
-            for (int i = 0; i < n.Length; i++)
-                if (n[i] == i)
+            for (int i = 0; i < n; i++)
+            {
+                x = int.Parse(Console.ReadLine());
+                if (x == i)
                     sum++;
+            }
             Console.WriteLine($"In secventa exista {sum} numere egale cu pozitia pe care apar in secventa.");
         }
         static void _6()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x, y;
 
             int i;
-            for (i = 1; i < n.Length; i++)
-                if (n[i - 1] > n[i])
+            x = int.Parse(Console.ReadLine());
+            for (i = 1; i < n; i++)
+            {
+                y = int.Parse(Console.ReadLine());
+                if (x > y)
                     break;
-            Console.WriteLine($"Secventa de numere {(i == n.Length ? "" : "nu ")}este in ordine crescatoare.");
+                x = y;
+            }
+            Console.WriteLine($"Secventa de numere {(i == n ? "" : "nu ")}este in ordine crescatoare.");
         }
         static void _7()
         {
-            int[] n = citireVector();
-            int mini = n[0], maxi = n[0];
+            int n = citireNVector(), x;
+            x = int.Parse(Console.ReadLine());
+            int mini = x, maxi = x;
 
-            for (int i = 1; i < n.Length; i++)
-                if (n[i] < mini)
-                    mini = n[i];
-                else if (n[i] > maxi)
-                    maxi = n[i];
+            for (int i = 1; i < n; i++)
+            {
+                if (x < mini)
+                    mini = x;
+                else if (x > maxi)
+                    maxi = x;
+                x = int.Parse(Console.ReadLine());
+            }
 
             Console.WriteLine($"Cel mai mare numar din secventa este {maxi} iar cel mai mic numar din secventa este {mini}.");
         }
@@ -166,45 +196,76 @@ namespace Problems_pool_2___probleme_cu_secvente
         }
         static void _9()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x, y;
 
-            if (n.Length > 1)
+            if (n > 1)
             {
-                bool crescator = true, descrescator = true;
-                for (int i = 1; i < n.Length; i++)
-                    if (n[i - 1] > n[i])
-                        crescator = false;
-                if (crescator == false)
+                x = int.Parse(Console.ReadLine());
+                y = int.Parse(Console.ReadLine());
+
+                int i;
+                bool crescator = true;
+
+                for (i = 2; i < n && x == y; i++)
                 {
-                    for (int i = 1; i < n.Length; i++)
-                        if (n[i - 1] < n[i])
-                            descrescator = false;
-                    if (descrescator == true)
-                        Console.WriteLine("Secventa este monoton descrescatoare.");
-                    else
-                        Console.WriteLine("Secventa nu este monoton crescatoare, nici monoton descrescatoare.");
+                    x = y;
+                    y = int.Parse(Console.ReadLine());
                 }
+                if (i == n)
+                    Console.WriteLine("Toate elementele din secventa sunt egale.");
                 else
-                    Console.WriteLine("Secventa este monoton crescatoare.");
+                {
+                    crescator = x < y ? true : false;
+                    if (crescator == true)
+                    {
+                        for (; i < n && x <= y; i++)
+                        {
+                            x = y;
+                            y = int.Parse(Console.ReadLine());
+                        }
+                        if (i == n)
+                            Console.WriteLine("Secventa de numere este monoton crescatoare.");
+                        else
+                            Console.WriteLine("Secventa de numere nu este monotona.");
+                    }
+                    else
+                    {
+                        for (; i < n && x >= y; i++)
+                        {
+                            x = y;
+                            y = int.Parse(Console.ReadLine());
+                        }
+                        if (i == n)
+                            Console.WriteLine("Secventa de numere este monoton descrescatoare.");
+                        else
+                            Console.WriteLine("Secventa de numere nu este monotona.");
+                    }
+
+                }
+
             }
             else
                 Console.WriteLine("Secventa trebuie sa contina mai mult de 1 element.");
         }
         static void _10()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x;
 
-            int nr = n[0], maxiCurent = 1, maxi = 1;
-            for (int i = 1; i < n.Length; i++)
+            x = int.Parse(Console.ReadLine());
+
+            int nr = x, maxiCurent = 1, maxi = 1;
+            for (int i = 1; i < n; i++)
             {
-                if (n[i] == nr)
+                x = int.Parse(Console.ReadLine());
+
+                if (x == nr)
                     maxiCurent++;
                 else
                 {
                     if (maxiCurent > maxi)
                         maxi = maxiCurent;
                     maxiCurent = 1;
-                    nr = n[i];
+                    nr = x;
                 }
                 if (maxiCurent > maxi)
                     maxi = maxiCurent;
@@ -213,12 +274,13 @@ namespace Problems_pool_2___probleme_cu_secvente
         }
         static void _11()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x;
 
             int og, aux, sum = 0;
-            for (int i = 0; i < n.Length; i++)
+            for (int i = 0; i < n; i++)
             {
-                aux = n[i];
+                x = int.Parse(Console.ReadLine());
+                aux = x;
                 og = 0;
                 while (aux != 0)
                 {
@@ -226,154 +288,170 @@ namespace Problems_pool_2___probleme_cu_secvente
                     aux /= 10;
                 }
                 sum += og;
+
             }
             Console.WriteLine($"Suma inverselor numerelor din secventa este {sum}.");
         }
         static void _12()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x, y;
 
             int nrSecv = 0;
             bool ok;
             int i, j;
+            y = int.Parse(Console.ReadLine());
+            x = y;
 
-            for (i = 0; i < n.Length - 1; i++)
+            for (i = 0; i < n - 1; i++)
             {
+                x = y;
+                y = int.Parse(Console.ReadLine());
                 ok = true;
-                if (n[i] != 0 && n[i + 1] != 0)
+                if (x != 0 && y != 0)
                 {
-                    for (j = i; n[j] != 0 && n[j + 1] != 0 && j < n.Length - 1 && ok == true; j++)
+                    for (j = i; x != 0 && y != 0 && j < n - 1 && ok == true; j++)
                     {
-                        if (n[j] >= n[j + 1])
+                        if (x >= y)
                             ok = false;
+                        x = y;
+                        y = int.Parse(Console.ReadLine());
                     }
                     if (ok == true)
                         nrSecv++;
                     i = j;
                 }
-                else if (n[i] != 0)
+                else if (x != 0)
                     nrSecv++;
             }
-            if (n[n.Length - 2] == 0 && n[n.Length - 1] != 0)
+            if (x == 0 && y != 0)
                 nrSecv++;
 
             Console.WriteLine($"In secventa sunt {nrSecv} grupuri de numere consecutive diferite de zero.");
         }
         static void _13()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x, y;
+            y = int.Parse(Console.ReadLine());
 
-            bool crescatoare = true;
-            for (int i = 1; i <= n.Length; i++)
+            bool crescatoare = true, cadere = false;
+            for (int j = 0; j < n - 1 && crescatoare == true; j++)
             {
-                crescatoare = true;
-                for (int j = 0; j < n.Length - 1 && crescatoare == true; j++)
-                    if (n[j] > n[j + 1])
-                        crescatoare = false;
-                if (crescatoare == true)
-                    break;
-                else
+                x = y;
+                y = int.Parse(Console.ReadLine());
+
+                if (x > y)
                 {
-                    int aux = n[0];
-                    for (int j = 0; j < n.Length - 1; j++)
-                        n[j] = n[j + 1];
-                    n[n.Length - 1] = aux;
+                    if (cadere == true)
+                        crescatoare = false;
+                    cadere = true;
                 }
             }
             Console.WriteLine($"Secventa {(crescatoare == true ? "" : "nu ")}este o secventa crescatoare rotita.");
         }
         static void _14()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x, y;
+            y = int.Parse(Console.ReadLine());
 
-            bool monotona = true;
-            for (int i = 1; i <= n.Length; i++)
+            bool crescatoare = true, cadere = false, descrescatoare = true, urcare = false;
+            for (int j = 0; j < n - 1 && (crescatoare == true || descrescatoare == true); j++)
             {
-                monotona = true;
-                for (int j = 0; j < n.Length - 1 && monotona == true; j++)
-                    if (n[j] > n[j + 1])
-                        monotona = false;
+                x = y;
+                y = int.Parse(Console.ReadLine());
 
-                if (monotona == true)
-                    break;
-
-                monotona = true;
-                for (int j = 0; j < n.Length - 1 && monotona == true; j++)
-                    if (n[j] < n[j + 1])
-                        monotona = false;
-
-                if (monotona == true)
-                    break;
-
-                else
+                if (x > y)
                 {
-                    int aux = n[0];
-                    for (int j = 0; j < n.Length - 1; j++)
-                        n[j] = n[j + 1];
-                    n[n.Length - 1] = aux;
+                    if (cadere == true)
+                        crescatoare = false;
+                    cadere = true;
+                }
+                if (x < y)
+                {
+                    if (urcare == true)
+                        descrescatoare = false;
+                    urcare = true;
                 }
             }
-            Console.WriteLine($"Secventa {(monotona == true ? "" : "nu ")}este o secventa monotona rotita.");
+            Console.WriteLine($"Secventa {(crescatoare == true || descrescatoare == true ? "" : "nu ")}este o secventa monotona rotita.");
         }
         static void _15()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x, y;
 
+            y = int.Parse(Console.ReadLine());
             int i;
-            for (i = 0; i < n.Length - 1; i++)
-                if (n[i] > n[i + 1])
-                    break;
-            i++;
-            if (i != n.Length)
+            for (i = 0; i < n - 1; i++)
             {
-                for (; i < n.Length - 1; i++)
-                    if (n[i] < n[i + 1])
+                x = y;
+                y = int.Parse(Console.ReadLine());
+
+                if (x > y)
+                    break;
+            }
+            i++;
+            if (i != n)
+            {
+                for (; i < n - 1; i++)
+                {
+                    x = y;
+                    y = int.Parse(Console.ReadLine());
+                    if (x < y)
                         break;
+                }
                 i++;
             }
 
-            Console.WriteLine($"Secventa de numere {(i == n.Length ? "" : "nu ")}este o secventa bitonica.");
+            Console.WriteLine($"Secventa de numere {(i == n ? "" : "nu ")}este o secventa bitonica.");
         }
         static void _16()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x, y;
+
+            y = int.Parse(Console.ReadLine());
 
             int i = 0;
-            for (int k = 1; k <= n.Length; k++)
+
+            for (i = 0; i < n - 1; i++)
             {
-                for (i = 0; i < n.Length - 1; i++)
-                    if (n[i] > n[i + 1])
-                        break;
-                i++;
-                if (i != n.Length)
+                x = y;
+                y = int.Parse(Console.ReadLine());
+                if (x > y)
+                    break;
+            }
+            i++;
+            if (i != n)
+            {
+                for (; i < n - 1; i++)
                 {
-                    for (; i < n.Length - 1; i++)
-                        if (n[i] < n[i + 1])
+                    x = y;
+                    y = int.Parse(Console.ReadLine());
+                    if (x < y)
+                        break;
+                }
+                i++;
+                if(i!=n)
+                {
+                    for (; i < n - 1; i++)
+                    {
+                        x = y;
+                        y = int.Parse(Console.ReadLine());
+                        if (x > y)
                             break;
+                    }
                     i++;
                 }
-
-                if (i == n.Length)
-                    break;
-                else
-                {
-                    int aux = n[0];
-                    for (int j = 0; j < n.Length - 1; j++)
-                        n[j] = n[j + 1];
-                    n[n.Length - 1] = aux;
-                }
-
             }
-            Console.WriteLine($"Secventa de numere {(i == n.Length ? "" : "nu ")}este o secventa bitonica rotita.");
+            Console.WriteLine($"Secventa de numere {(i == n ? "" : "nu ")}este o secventa bitonica rotita.");
         }
         static void _17()
         {
-            int[] n = citireVector();
+            int n = citireNVector(), x;
 
             int sum = 0, valMax = 0;
-            for (int i = 0; i < n.Length && sum >= 0; i++)
+            for (int i = 0; i < n && sum >= 0; i++)
             {
-                sum += n[i] == 0 ? 1 : -1;
+                x = int.Parse(Console.ReadLine());
+                sum += x == 0 ? 1 : -1;
                 valMax = sum > valMax ? sum : valMax;
             }
             Console.WriteLine($"Secventa este o secventa de paranteze {(sum == 0 ? "corecta iar nivelul maxim de incuibare este " + valMax : "incorecta")}.");
