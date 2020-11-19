@@ -33,7 +33,6 @@ Precizari:
 */
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace Problems_pool_1___probleme_cu_numere
 {
@@ -98,14 +97,14 @@ namespace Problems_pool_1___probleme_cu_numere
         {
             int y = citireInt("y");
 
-            Console.WriteLine($"Anul {y} {(y % 4 == 0 ? "\b" : "nu")} este un an bisect.");
+            Console.WriteLine($"Anul {y} {((y % 4 == 0 && y % 100 != 0 ) || y % 400 == 0 ? "\b" : "nu")} este un an bisect.");
         }
         static void _5()
         {
             int n = citireInt("n"), k = citireInt("k");
 
             if (k <= n.ToString().Length)
-                Console.WriteLine($"A k-a cifra a numarului {n} de la dreapta la stanga este {(n / (int)Math.Pow(10, k - 1)) % 10}");
+                Console.WriteLine($"A {k}-a cifra de la sfarsitul numarului {n} este {(n / (int)Math.Pow(10, k - 1)) % 10}");
             else
                 Console.WriteLine("k trebuie sa fie mai mic decat numarul de cifre al lui n.");
         }
