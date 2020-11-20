@@ -97,16 +97,16 @@ namespace Problems_pool_1___probleme_cu_numere
         {
             int y = citireInt("y");
 
-            Console.WriteLine($"Anul {y} {((y % 4 == 0 && y % 100 != 0 ) || y % 400 == 0 ? "\b" : "nu")} este un an bisect.");
+            Console.WriteLine($"Anul {y} {((y % 4 == 0 && y % 100 != 0) || y % 400 == 0 ? "\b" : "nu")} este un an bisect.");
         }
         static void _5()
         {
             int n = citireInt("n"), k = citireInt("k");
 
-            if (k <= n.ToString().Length)
+            if (k > 0 && k <= n.ToString().Length)
                 Console.WriteLine($"A {k}-a cifra de la sfarsitul numarului {n} este {(n / (int)Math.Pow(10, k - 1)) % 10}");
             else
-                Console.WriteLine("k trebuie sa fie mai mic decat numarul de cifre al lui n.");
+                Console.WriteLine("k trebuie sa fie mai mic decat numarul de cifre al lui n si mai mare ca 0.");
         }
         static void _6()
         {
@@ -334,7 +334,7 @@ namespace Problems_pool_1___probleme_cu_numere
 
             Console.WriteLine($"Numarul {n}{(ok == true ? "" : " nu")} este format doar din 2 cifre care se tot repeta.");
         }
-        static void _20()   
+        static void _20()
         {
             int m = citireInt("m"), n = citireInt("n");
             int m1 = m, n1 = n;
@@ -451,6 +451,6 @@ namespace Problems_pool_1___probleme_cu_numere
                 }
             }
         }
-            #endregion
+        #endregion
     }
 }
