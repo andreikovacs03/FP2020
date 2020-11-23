@@ -326,46 +326,63 @@ namespace Problems_pool_2___probleme_cu_secvente
             int n = citireNVector(), x, y;
             y = int.Parse(Console.ReadLine());
 
+            int nrInit = y;
+
             bool crescatoare = true, cadere = false;
-            for (int j = 0; j < n - 1 && crescatoare == true; j++)
+            for (int j = 0; j < n - 1 && crescatoare; j++)
             {
                 x = y;
                 y = int.Parse(Console.ReadLine());
 
                 if (x > y)
                 {
-                    if (cadere == true)
+                    if (cadere)
                         crescatoare = false;
                     cadere = true;
                 }
             }
-            Console.WriteLine($"Secventa {(crescatoare == true ? "" : "nu ")}este o secventa crescatoare rotita.");
+
+            if (y > nrInit && cadere)
+                crescatoare = false;
+
+            Console.WriteLine($"Secventa {(crescatoare ? "" : "nu ")}este o secventa crescatoare rotita.");
         }
         static void _14()
         {
             int n = citireNVector(), x, y;
             y = int.Parse(Console.ReadLine());
 
+            int nrInit = y;
+
             bool crescatoare = true, cadere = false, descrescatoare = true, urcare = false;
-            for (int j = 0; j < n - 1 && (crescatoare == true || descrescatoare == true); j++)
+
+            for (int j = 0; j < n - 1 && (crescatoare || descrescatoare); j++)
             {
                 x = y;
                 y = int.Parse(Console.ReadLine());
 
                 if (x > y)
                 {
-                    if (cadere == true)
+                    if (cadere)
                         crescatoare = false;
                     cadere = true;
                 }
+
                 if (x < y)
                 {
-                    if (urcare == true)
+                    if (urcare)
                         descrescatoare = false;
                     urcare = true;
                 }
             }
-            Console.WriteLine($"Secventa {(crescatoare == true || descrescatoare == true ? "" : "nu ")}este o secventa monotona rotita.");
+
+            if (y > nrInit && cadere)
+                crescatoare = false;
+
+            if (y < nrInit && urcare)
+                descrescatoare = false;
+
+            Console.WriteLine($"Secventa {(crescatoare || descrescatoare ? "" : "nu ")}este o secventa monotona rotita.");
         }
         static void _15()
         {
