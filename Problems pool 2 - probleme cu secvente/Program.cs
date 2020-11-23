@@ -297,33 +297,26 @@ namespace Problems_pool_2___probleme_cu_secvente
             int n = citireNVector(), x, y;
 
             int nrSecv = 0;
-            bool ok;
+            bool ok = false;
             int i, j;
             y = int.Parse(Console.ReadLine());
             x = y;
 
-            for (i = 0; i < n - 1; i++)
+            for (i = 1; i < n; i++)
             {
                 x = y;
                 y = int.Parse(Console.ReadLine());
-                ok = true;
-                if (x != 0 && y != 0)
-                {
-                    for (j = i; x != 0 && y != 0 && j < n - 1 && ok == true; j++)
-                    {
-                        if (x >= y)
-                            ok = false;
-                        x = y;
-                        y = int.Parse(Console.ReadLine());
-                    }
-                    if (ok == true)
-                        nrSecv++;
-                    i = j;
-                }
-                else if (x != 0)
+
+                if (x == 0 && y != 0)
+                    ok = true;
+
+                if (x != 0 && y == 0 && ok == true)
                     nrSecv++;
+
+                if (x > y)
+                    ok = false;
             }
-            if (x == 0 && y != 0)
+            if (ok == true)
                 nrSecv++;
 
             Console.WriteLine($"In secventa sunt {nrSecv} grupuri de numere consecutive diferite de zero.");
@@ -429,7 +422,7 @@ namespace Problems_pool_2___probleme_cu_secvente
                         break;
                 }
                 i++;
-                if(i!=n)
+                if (i != n)
                 {
                     for (; i < n - 1; i++)
                     {
