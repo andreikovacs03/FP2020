@@ -11,7 +11,7 @@ namespace Sierpinski
 
             // gfxEngine.drawSierpinskiTriangle_Random(5);
 
-            gfxEngine.drawPolyFractal_Fixed(40,10);
+            gfxEngine.drawPolyFractal_Fixed(15);
         }
     }
 }

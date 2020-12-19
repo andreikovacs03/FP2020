@@ -234,8 +234,8 @@ namespace Sierpinski
                 PointF[] newPoints = new PointF[points.Length];
 
                 for (int i = 0; i < newPoints.Length - 1; i++)
-                    newPoints[i] = weightPoint(points[i], 1, points[i + 1], 1);
-                newPoints[newPoints.Length - 1] = weightPoint(points[0], 1, points[points.Length - 1], 1);
+                    newPoints[i] = weightPoint(points[i], 2, points[i + 1], 1);
+                newPoints[newPoints.Length - 1] = weightPoint(points[points.Length - 1], 2, points[0], 1);
 
                 PolyFractal(limit - 1, newPoints, Color.FromArgb(currentColor.R + colorAdder.R, currentColor.G + colorAdder.G, currentColor.B + colorAdder.B), colorAdder);
             }
